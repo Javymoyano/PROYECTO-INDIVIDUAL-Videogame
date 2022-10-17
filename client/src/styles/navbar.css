@@ -1,0 +1,70 @@
+.nav-container {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  background-color: #2e2b2b;
+  gap: 8rem;
+
+  width: 100%;
+  height: 100%;
+  text-align: center;
+
+  justify-content: space-around;
+}
+.logo {
+  width: 150px;
+  position: relative;
+  padding: 1rem;
+}
+
+.ambos {
+  display: inline-flex;
+  position: relative;
+  margin: 30px;
+  gap: 2px;
+}
+
+.crearVideogame {
+  width: 30px;
+  position: relative;
+  margin: auto;
+  padding: 6px;
+  left: 10%;
+  top: 9px;
+  background-color: #e5194d;
+
+  border-radius: 50%;
+}
+
+.crearVideogame:hover {
+  background-color: #6362624f;
+}
+
+.encuentra {
+  color: #ffffff;
+  font-family: "Russo One", sans-serif;
+  letter-spacing: 2px;
+  font-size: 40px;
+  position: relative;
+  left: 15%;
+}
+
+.refresh {
+  align-items: center;
+  background-color: #e5194d;
+  border-radius: 50%;
+
+  width: 30px;
+
+  top: 3px;
+
+  padding: 8px 8px;
+  position: relative;
+}
+
+.refresh:hover {
+  background-color: #6362624f;
+  transition: 1s;
+}

@@ -1,0 +1,14 @@
+.home-cont {
+  background-image: url("../components/Images/fondoHome.jpg");
+  /* background-image: url("../componentes/image/fondo-home3.png"); */
+  /* background-color: black; */
+  margin: 0;
+  padding: 0;
+  position: absolute;
+
+  width: 100vw;
+
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+}

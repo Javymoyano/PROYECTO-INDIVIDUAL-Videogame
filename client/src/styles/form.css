@@ -1,0 +1,151 @@
+/* * {
+  box-sizing: border-box;
+} */
+@import url("https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,300;0,600;0,800;1,300;1,600;1,800&family=Russo+One&display=swap");
+.container-form {
+  background: rgba(0, 0, 0, 0.5) url("../components/Images/form.jpg");
+  background-blend-mode: darken;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  background-size: cover;
+  background-position: center;
+}
+
+.form {
+  width: 300px;
+  height: 580px;
+  padding: 15px;
+  margin: auto;
+  background-color: #2e2b2b;
+
+  display: block;
+  border-radius: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  position: absolute;
+  margin-top: 50px;
+  left: 40%;
+  bottom: 10px;
+}
+
+.input_label {
+  position: relative;
+  bottom: 50px;
+}
+
+.title {
+  position: relative;
+  text-align: center;
+  justify-content: center;
+  width: 330px;
+  bottom: 70px;
+  right: 15px;
+  margin-top: 2px;
+  font-family: "Russo One", sans-serif;
+  border-radius: 10px 10px 0 0;
+  background-image: linear-gradient(to bottom right, #2498d7, #e5194d);
+  color: #fff;
+  letter-spacing: 6px;
+}
+
+.input {
+  position: relative;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  background-color: #6362624f;
+  padding: 5px;
+  color: #2e2b2b4f;
+}
+
+label {
+  position: relative;
+  margin: 7px;
+  display: block;
+  padding-left: 15px;
+  text-indent: -15px;
+  color: #2498d7;
+  font-family: "Kanit", sans-serif;
+  font-size: 12px;
+  outline: none;
+  letter-spacing: 2px;
+}
+
+li {
+  margin-top: 1px;
+  font-size: 12px;
+  text-align: center;
+  color: #3c59a4;
+  padding-right: 30px;
+  list-style: none;
+}
+
+.atras {
+  background-color: #ffcc03;
+  border-color: transparent;
+  font-size: 18px;
+  font-weight: 200;
+  border-radius: 5px;
+  position: relative;
+  right: 40%;
+  top: 30px;
+
+  color: #2e2b2b;
+  margin-right: auto;
+  cursor: pointer;
+  padding: 8px 8px;
+}
+.atras:hover {
+  background-color: #2e2b2b;
+  color: #ffcc03;
+}
+
+.generos {
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  background-color: #6362624f;
+  padding: 5px 15px;
+  color: #e5194d;
+}
+
+.elige-tipo {
+  color: #ffcc03;
+  margin: 2px;
+  font-size: 11px;
+}
+
+.bottom {
+  position: static;
+  background-color: #e5194d;
+  border-radius: 5px;
+  font-weight: bold;
+  border-color: transparent;
+  padding: 8px;
+  color: rgb(243, 231, 255);
+  font-family: "Kanit", sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+
+  letter-spacing: 2px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+  cursor: pointer;
+}
+
+.bottom:hover {
+  background-color: #f36387;
+  color: #2e2b2b;
+}
+
+.error {
+  color: #e5194d;
+  margin-top: 2px;
+  font-size: 14px;
+  position: relative;
+}

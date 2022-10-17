@@ -1,0 +1,38 @@
+.inputSearch {
+  text-align: center;
+  font-family: "Rubik", sans-serif;
+  display: inline-flex;
+  margin: 1px;
+  border: #e5194d;
+  color: #e5194d;
+  border-width: 1px;
+  border-radius: 20px 0 0 20px;
+  justify-content: center;
+  height: 36px;
+  padding-right: 2rem;
+  margin: auto;
+}
+.inputSearchFader {
+  text-align: center;
+  display: inline-flex;
+  margin: 10px;
+  max-height: 1rem;
+}
+
+.imgSearch {
+  width: 31px;
+  height: 30px;
+  padding: 4px;
+  margin: auto;
+
+  background-color: #e5194d;
+  border-radius: 0 20px 20px 0;
+  text-align: center;
+  justify-content: center;
+}
+
+.imgSearch:hover {
+  background-color: #6362624f;
+
+  transition: 1s;
+}

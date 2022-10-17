@@ -1,0 +1,199 @@
+@import url("https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,300;0,600;0,800;1,300;1,600;1,800&family=Russo+One&display=swap");
+
+.landing {
+  margin: 0;
+  padding: 0;
+  font-family: "Russo One", sans-serif;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: url("../components/Images/landing.jpg") no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.títuloLanding {
+  position: absolute;
+  float: left;
+  font-family: "Russo One", sans-serif;
+  color: #ffffff;
+  font-size: x-large;
+  left: 3.5%;
+  height: 5em;
+  width: 1rem;
+
+  letter-spacing: 6px;
+
+  padding: 7px 2px 7px 2px;
+}
+
+.explora {
+  bottom: 0;
+  left: -5%;
+  position: absolute;
+  padding: 6em 3em;
+  /* font-family: 'Russo One', sans-serif; */
+  font: 40px/50px "Kanit", sans-serif;
+  font-style: italic;
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+}
+.explora p {
+  height: 50px;
+  float: left;
+  margin-right: 0.3em;
+}
+.explora b {
+  float: left;
+  overflow: hidden;
+  position: relative;
+  height: 50px;
+  top: 40px;
+}
+.explora .mensaje {
+  display: inline-block;
+  color: #e5194d;
+  position: relative;
+  white-space: nowrap;
+  top: 0;
+  left: 0;
+
+  /*animation*/
+  -webkit-animation: move 5s;
+  -moz-animation: move 5s;
+  -ms-animation: move 5s;
+  -o-animation: move 5s;
+  animation: move 5s;
+  /*animation-iteration-count*/
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-iteration-count: infinite;
+  -ms-animation-iteration-count: infinite;
+  -o-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  /*animation-delay*/
+  -webkit-animation-delay: 1s;
+  -moz-animation-delay: 1s;
+  -ms-animation-delay: 1s;
+  -o-animation-delay: 1s;
+  animation-delay: 1s;
+}
+@keyframes move {
+  0% {
+    top: 0px;
+  }
+  20% {
+    top: -50px;
+  }
+  40% {
+    top: -100px;
+  }
+  60% {
+    top: -150px;
+  }
+  80% {
+    top: -200px;
+  }
+}
+
+@-webkit-keyframes move {
+  0% {
+    top: 0px;
+  }
+  20% {
+    top: -50px;
+  }
+  40% {
+    top: -100px;
+  }
+  60% {
+    top: -150px;
+  }
+  80% {
+    top: -200px;
+  }
+}
+@-moz-keyframes move {
+  0% {
+    top: 0px;
+  }
+  20% {
+    top: -50px;
+  }
+  40% {
+    top: -100px;
+  }
+  60% {
+    top: -150px;
+  }
+  80% {
+    top: -200px;
+  }
+}
+@-o-keyframes move {
+  0% {
+    top: 0px;
+  }
+  20% {
+    top: -50px;
+  }
+  40% {
+    top: -100px;
+  }
+  60% {
+    top: -150px;
+  }
+  80% {
+    top: -200px;
+  }
+}
+@keyframes move {
+  0% {
+    top: 0px;
+  }
+  20% {
+    top: -50px;
+  }
+  40% {
+    top: -100px;
+  }
+  60% {
+    top: -150px;
+  }
+  80% {
+    top: -200px;
+  }
+}
+
+/* .in {
+  bottom: 0;
+  position: absolute;
+  left: -7%;
+  height: 8em;
+  font-family: "Russo One", sans-serif;
+  top: 21em;
+  padding-left: 9.5em;
+} */
+.buttonIn {
+  bottom: 0;
+  position: absolute;
+  float: left;
+  font-family: "Russo One", sans-serif;
+  background-color: transparent;
+  color: rgb(255, 255, 255);
+  border: 2px solid #2498d7;
+  top: 20em;
+  font-size: 20px;
+  letter-spacing: 4px;
+  left: 3.5%;
+  height: 3em;
+  border-radius: 7px;
+  padding: 7px 190px 7px 190px;
+}
+
+.buttonIn:hover {
+  background-color: #e5194d; /* Green */
+  color: #ffffff;
+  border: 2px solid #e5194d;
+  transition: 1s;
+  box-shadow: 0 0 10px #e5194d, 0 0 40px #e5194d, 0 0 80px #e5194d;
+}

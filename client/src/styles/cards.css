@@ -1,0 +1,116 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;1,300;1,500&family=Russo+One&display=swap");
+
+.stylesCard {
+  background-color: #2e2b2b;
+
+  margin: 10px;
+  width: 350px;
+  border-radius: 10px;
+  display: inline-block;
+  transition: all 400ms ease;
+  box-sizing: content-box;
+  min-height: 150px;
+  border-color: transparent;
+  /* border-color: #21cafd; */
+  /* border-width: 2px;
+  border-style: solid; */
+  position: relative;
+}
+
+.stylesCard:hover {
+  box-shadow: 0 0 10px #21cafd, 0 0 5px #21cafd, 0 0 10px #21cafd;
+  transform: translateY(-3%);
+
+  /* border-color: #3c59a4; */
+  border-width: 3px;
+}
+
+.stylesCard img {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  border-radius: 7px 7px 0px 0px;
+
+  width: 350px;
+  height: 220px;
+  object-fit: cover;
+  /* height: 233px; */
+}
+
+.name {
+  font-family: "Rubik", sans-serif;
+  width: 250px;
+  height: 90px;
+  text-align: start;
+  letter-spacing: 2px;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 10px;
+  font-size: 15px;
+  color: #ffffff;
+  overflow: hidden;
+  position: relative;
+  bottom: 20px;
+  margin-bottom: 2px;
+  text-decoration: none;
+}
+
+.rating {
+  list-style-type: none;
+  color: #2498d7;
+  /* background-color: #21cafd98; */
+  border-color: #2498d7;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 5px;
+  text-decoration-line: none;
+  display: inline;
+  position: relative;
+
+  left: 140px;
+  bottom: -9px;
+  padding: 3px;
+  font-size: 11px;
+  letter-spacing: 1px;
+  font-weight: 200;
+  font-family: "Rubik", sans-serif;
+  text-decoration: none;
+}
+
+.genereos_list {
+  font-family: "Rubik", sans-serif;
+  text-align: start;
+  position: relative;
+  padding: 0 0px 0 12px;
+  font-size: 11px;
+  color: #2498d7;
+  bottom: 17px;
+
+  font-weight: 200 bold;
+  letter-spacing: 2px;
+}
+
+.genres_p {
+  font-family: "Rubik", sans-serif;
+  text-align: center;
+  justify-content: center;
+  position: relative;
+  padding: 6px 2px 1px;
+  font-size: 11px;
+  color: #ffffff;
+  background-color: #6362624f;
+
+  border-width: 1px;
+
+  border-radius: 7px;
+  margin-left: 10px;
+  bottom: 17px;
+  width: 70px;
+  height: 20px;
+
+  font-weight: 400;
+  letter-spacing: 2px;
+}
