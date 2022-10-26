@@ -5,18 +5,20 @@ const router = Router();
 //!...........POST PARA CREAR VIDEOGAMES..............//
 
 router.post("/", async (req, res) => {
-  const { name, image, rating, description, platforms, genres } = req.body;
+  const { name, image, rating, description, platforms, genres, released } =
+    req.body;
 
   try {
-    // if (!name || !image) {
-    //         res.status(400).send("Falta Nombre o Imagen");
-    //       }
+    if (!name || !image) {
+      res.status(400).send("Falta Nombre o Imagen");
+    }
     const objVideo = {
       name,
       image,
       rating,
       description,
       platforms,
+      released,
     };
 
     const newVideogame = await Videogame.create(objVideo);
@@ -24,8 +26,10 @@ router.post("/", async (req, res) => {
     let genresVg = await Genres.findAll({ where: { name: genres } });
     newVideogame.addGenres(genresVg);
     res.send(newVideogame);
-  } catch (error) {
-    console.log(error);
+  } catch (alert) {
+    res
+      .status(400)
+      .send({ alert: "Para crear un Videogame debe completar los datos" });
   }
 });
 

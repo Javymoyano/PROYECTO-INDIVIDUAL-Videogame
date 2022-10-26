@@ -13,10 +13,10 @@ const videogameId = async (id) => {
       image: dataApi.data.background_image,
       released: dataApi.data.released,
       rating: dataApi.data.rating,
-      genres: dataApi.data.genres.map((el) => el.name).join(" - "),
+      genres: dataApi.data.genres.map((el) => el.name).join(" · "),
       platforms: dataApi.data.platforms
         .map((el) => el.platform.name)
-        .join(" - "),
+        .join(" · "),
       description: dataApi.data.description.replace(/<[^>]*>/g, ""),
     };
     console.log("SOY videgameIdData", videogameDataId);
@@ -30,10 +30,10 @@ const videogameId = async (id) => {
 
     const videogameBaseDatos = {
       name: videogameDbId.name,
-      image: videogameDbId.background_image,
+      image: videogameDbId.image,
       released: videogameDbId.released,
       rating: videogameDbId.rating,
-      genres: videogameDbId.genres.map((el) => el.name),
+      genres: videogameDbId.genres.map((el) => el.name).join(" · "),
       platforms: videogameDbId.platforms,
       description: videogameDbId.description,
     };

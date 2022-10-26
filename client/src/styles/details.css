@@ -48,3 +48,106 @@
     stroke-dashoffset: -124px;
   }
 }
+
+.content_ds {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  background-color: #2e2b2b;
+  width: 100vw;
+
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+}
+
+.cont_img_ds {
+  height: 100%;
+}
+.img_ds {
+  justify-content: center;
+  width: 1350px;
+  height: 100%;
+  object-fit: cover;
+  background-image: linear-gradient(to bottom, rgb(0, 0, 0), orange);
+  background-blend-mode: multiply;
+}
+
+.description {
+  color: aliceblue;
+  text-align: start;
+  margin: 15px;
+  max-width: 1300px;
+  font-family: "Kanit", sans-serif;
+  font-size: 15px;
+  position: relative;
+  bottom: 50px;
+}
+
+.game_name {
+  color: aliceblue;
+  text-align: start;
+  margin: 15px;
+  width: 1300px;
+  font-family: "Kanit", sans-serif;
+  font-size: 30px;
+  position: relative;
+  bottom: 50px;
+}
+
+.rt {
+  width: 40px;
+  height: 40px;
+  /* background-color: #6362624f; */
+  background-color: #2498d7;
+  margin: 5px 5px 5px 15px;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.rt_img {
+  width: 31px;
+  height: 30px;
+  padding: 4px;
+  margin: auto;
+}
+
+.rt_a {
+  color: aliceblue;
+  text-align: start;
+  margin: 5px;
+  left: 75px;
+  font-family: "Kanit", sans-serif;
+  font-weight: 400;
+  letter-spacing: 2px;
+  font-size: 15px;
+  position: relative;
+  bottom: 45px;
+}
+
+.atrasImg {
+  width: 30px;
+  height: 30px;
+}
+
+.back_to_home {
+  background-color: #e5194d;
+
+  border-color: transparent;
+
+  border-radius: 50%;
+  position: relative;
+  width: 50px;
+  height: 50px;
+  right: 45%;
+  top: 20px;
+
+  cursor: pointer;
+  padding: 8px;
+}
+
+.back_to_home:hover {
+  background-color: #6362624f;
+  transition: 1s;
+  border-color: transparent;
+}

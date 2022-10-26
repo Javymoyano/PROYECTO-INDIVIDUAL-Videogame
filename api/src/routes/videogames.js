@@ -40,16 +40,59 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-// router.get("/:id", async (req, res) => {
+// router.delete("/:id", async (req, res) => {
+//   const { id } = req.params;
 //   try {
-//     const { id } = req.params;
-//     const gamesTodos = await allGames();
-//     if (id) {
-//       let gamesId = await gamesTodos.filter((e) => e.id == id);
-//       console.log("SOY gamesId", gamesId);
-//       gamesId.length
-//         ? res.status(200).json(gamesId)
-//         : res.status(400).send("Ese ID no corresponde con un Videogame");
+//     const videoId = await videogameId(id);
+//     if (videoId) {
+//       Videogame.destroy({
+//         where: { id },
+//       });
+//     }
+//     return res.status(200).send("Videogame eliminado");
+//   } catch (error) {
+//     console.log(error);
+//   }
+// });
+
+router.delete("/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const videoId = videogameId(id);
+    if (videoId) {
+      await Videogame.destroy({ where: { id: id } });
+      return res.status(200).send("Videogame eliminado");
+    }
+  } catch (error) {
+    return res.status(400).send("Hubo en error en la eliminación");
+  }
+});
+
+router.put("/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    const videoPut = await videogameId(id);
+    const videogame = req.body;
+    if (videoPut) {
+      await Videogame.update(videogame, {
+        where: { id: id },
+      });
+    }
+    return res.status(200).send("Videogame editado");
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+// router.delete("/:id", async (req, res) => {
+//   const { id } = req.params;
+//   try {
+//     const videoId = await videogameId(id);
+//     if (videoId) {
+//       Videogame.destroy({
+//         where: { id },
+//       });
+//       return res.status(200).json({ message: "video deleted" });
 //     }
 //   } catch (error) {
 //     console.log(error);

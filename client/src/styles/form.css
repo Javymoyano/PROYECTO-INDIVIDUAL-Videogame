@@ -17,7 +17,7 @@
 
 .form {
   width: 300px;
-  height: 580px;
+  min-height: 580px;
   padding: 15px;
   margin: auto;
   background-color: #2e2b2b;
@@ -42,7 +42,7 @@
   text-align: center;
   justify-content: center;
   width: 330px;
-  bottom: 70px;
+  bottom: 50px;
   right: 15px;
   margin-top: 2px;
   font-family: "Russo One", sans-serif;
@@ -59,7 +59,7 @@
   border-radius: 5px;
   background-color: #6362624f;
   padding: 5px;
-  color: #2e2b2b4f;
+  color: #ffffff;
 }
 
 label {
@@ -84,24 +84,30 @@ li {
   list-style: none;
 }
 
-.atras {
-  background-color: #ffcc03;
-  border-color: transparent;
-  font-size: 18px;
-  font-weight: 200;
-  border-radius: 5px;
-  position: relative;
-  right: 40%;
-  top: 30px;
-
-  color: #2e2b2b;
-  margin-right: auto;
-  cursor: pointer;
-  padding: 8px 8px;
+.flechaF {
+  width: 30px;
+  height: 30px;
 }
-.atras:hover {
-  background-color: #2e2b2b;
-  color: #ffcc03;
+
+.irCasa {
+  background-color: #e5194d;
+
+  border-color: transparent;
+
+  border-radius: 50%;
+  position: relative;
+  width: 50px;
+  height: 50px;
+  right: 45%;
+  top: 10px;
+
+  cursor: pointer;
+  padding: 8px;
+}
+.irCasa:hover {
+  background-color: #6362624f;
+
+  border-color: transparent;
 }
 
 .generos {
@@ -113,6 +119,15 @@ li {
   color: #e5194d;
 }
 
+.fecha {
+  position: relative;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  background-color: #6362624f;
+  padding: 5px 36px;
+  color: #ffffff;
+}
 .elige-tipo {
   color: #ffcc03;
   margin: 2px;
@@ -145,7 +160,22 @@ li {
 
 .error {
   color: #e5194d;
-  margin-top: 2px;
+  margin-top: 1px;
   font-size: 14px;
+  height: 1px;
   position: relative;
+}
+
+.swal-button {
+  padding: 7px 19px;
+  border-radius: 2px;
+  background-color: #e5194d;
+  font-family: "Rubik", sans-serif;
+  font-size: 12px;
+  border: 1px solid #e5194d;
+  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.3);
+}
+
+.swal-text {
+  font-family: "Rubik", sans-serif;
 }

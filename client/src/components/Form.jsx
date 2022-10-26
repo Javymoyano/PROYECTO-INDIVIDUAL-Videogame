@@ -2,8 +2,13 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { getGenresVideogame } from "../action";
+import { getGenresVideogame, getPlatformVideogame } from "../action";
 import "../styles/form.css";
+import backHome from "../components/Images/backblanco.png";
+import Mario from "../components/Images/mario.png";
+import swal from "sweetalert";
+import iupi from "../components/Images/iupi.png";
+import AlertExito from "./AlertExito";
 
 function validName(str) {
   if (typeof str !== "string") return true;
@@ -14,9 +19,11 @@ function validar(input) {
   let errors = {};
   if (validName(input.name)) errors.name = "Por favor introduzca un Nombre";
 
-  if (input.rating < 1 || input.attack >= 100)
-    errors.rating = "Debe ser mayor a 1 y menor a 1000";
+  if (input.rating < 1 || input.rating >= 5)
+    errors.rating = "Debe ser mayor a 1 y menor a 5";
 
+  if (!input.image) errors.image = "Debe introducir una imagen";
+  if (!input.released) errors.released = "Debe introducir una fecha";
   if (!input.genres) errors.genres = "Debe seleccionar el Género";
   if (!input.description)
     errors.description = "Por favor introduzca la Descripción";
@@ -28,19 +35,42 @@ function validar(input) {
 export default function Form() {
   const dispatch = useDispatch();
   const genres = useSelector((state) => state.genres);
-  const platforms = useSelector((state) => state.platforms);
+  // const platforms = useSelector((state) => state.platforms);
+
+  const platforms = [
+    "PC",
+    "PlayStation",
+    "Xbox",
+    "iOS",
+    "Android",
+    "Apple Macintosh",
+    "Linux",
+    "Nintendo",
+    "Atari",
+    "Commodore / Amiga",
+    "SEGA",
+    "3DO",
+    "Neo Geo",
+    "Web",
+  ];
+
+  console.log("SOY platforms", platforms);
 
   const [input, setInput] = useState({
     name: "",
     genres: [],
     image: "",
+    released: "",
     rating: "",
     description: "",
-    platforms: "",
+    platforms: [],
   });
 
   useEffect(() => {
     dispatch(getGenresVideogame());
+  }, []);
+  useEffect(() => {
+    dispatch(getPlatformVideogame());
   }, []);
 
   const [errors, setErrors] = useState({});
@@ -80,20 +110,44 @@ export default function Form() {
       name: "",
       genres: [],
       image: "",
+      released: "",
       rating: "",
       description: "",
       platforms: [],
     });
-    alert("Videogame creado con éxito");
+
+    alert("Creaste un nuevo Videogame!!");
+    // swal({
+    //   title: "Felicitaciones!",
+    //   text: "Creaste un nuevo Videogame!",
+    //   icon: "success",
+    //   button: "Listo!",
+    // });
 
     console.log("Soy el submit", input);
+  }
+  function handleDelete(genre) {
+    setInput({
+      ...input,
+      genres: input.genres.filter((e) => e !== genre),
+    });
+
+    console.log("Soy el submitGenres", input);
+  }
+  function handleDeletetPlatform(plataform) {
+    setInput({
+      ...input,
+      platforms: input.platforms.filter((e) => e !== plataform),
+    });
   }
 
   return (
     <div className="container-form">
       <div>
         <Link to="/home">
-          <button className="atras">ATRÁS</button>
+          <button className="irCasa">
+            <img className="flechaF" src={backHome} alt="atas" />
+          </button>
         </Link>
 
         <form className="form" onSubmit={handleSubmit}>
@@ -150,6 +204,22 @@ export default function Form() {
               {errors.image ? <p className="error">{errors.image}</p> : false}
             </div>
             <div>
+              <label>FECHA DE REALIZACIÓN</label>
+              <input
+                onChange={handleInputChange}
+                type="date"
+                placeholder="DD/MM/AAAA"
+                value={input.released}
+                name="released"
+                className="fecha"
+              />
+              {errors.released ? (
+                <p className="error">{errors.released}</p>
+              ) : (
+                false
+              )}
+            </div>
+            <div>
               <label>GÉNERO*</label>
               <select className="generos" onChange={handleGenres}>
                 {genres.map((e) => (
@@ -163,13 +233,19 @@ export default function Form() {
               <ul>
                 <li key={genres.id}>
                   {input.genres.map((e) => e.toUpperCase()).join(" - ")}
+                  {/* {input.genres.map((ele) => (
+                    <h5>
+                      {genres.find((g) => g.name === ele)?.name.toUpperCase()}
+                      <button onClick={() => handleDelete(ele)}>x</button>
+                    </h5>
+                  ))} */}
                 </li>
               </ul>
               {errors.genres ? <p className="error">{errors.genres}</p> : false}
             </div>
             <div>
               <label>PLATAFORMA*</label>
-              <select className="generos" onChange={handlePlatform}>
+              {/* <select className="generos" onChange={handlePlatform}>
                 <option value="PC">PC</option>
                 <option value="PlayStation">PlayStation</option>
                 <option value="Xbox">Xbox</option>
@@ -184,21 +260,29 @@ export default function Form() {
                 <option value="3DO">3DO</option>
                 <option value="NeoGeo">Neo Geo</option>
                 <option value="Web">Web</option>
+              </select> */}
+              <select className="generos" onChange={handlePlatform}>
+                {platforms.map((e) => (
+                  <option value={e}>{e}</option>
+                ))}
               </select>
-              {/* <select className="platforms" onChange={handlePlatform}>
-            {platforms.map((e) => (
-              <option value={e.name}>{e.name}</option>
-            ))}
-          </select> */}
               <p className="elige-tipo">
                 <small>*Elige hasta DOS tipos</small>
               </p>
 
-              {/* <ul>
-            <li key={platforms.id}>
-              {input.platforms.map((e) => e.toUpperCase()).join(" - ")}
-            </li>
-          </ul> */}
+              <ul>
+                <li key={platforms.id}>
+                  {input.platforms.map((e) => e.toUpperCase()).join(" - ")}
+                  {/* {input.platforms.map((el) => (
+                    <h5>
+                      {platforms.find((p) => p === el)}
+                      <button onClick={() => handleDeletetPlatform(el)}>
+                        x
+                      </button>
+                    </h5>
+                  ))} */}
+                </li>
+              </ul>
               {errors.platforms ? (
                 <p className="error">{errors.platforms}</p>
               ) : (

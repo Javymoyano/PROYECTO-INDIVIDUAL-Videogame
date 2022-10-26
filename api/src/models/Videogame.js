@@ -13,14 +13,14 @@ module.exports = (sequelize) => {
 
       description: {
         type: DataTypes.TEXT,
-        //allowNull: false,
+        allowNull: false,
       },
       platforms: {
         type: DataTypes.ARRAY(DataTypes.STRING),
         //type: DataTypes.STRING,
-        //allowNull: false,
+        allowNull: false,
       },
-      releaseDate: {
+      released: {
         type: DataTypes.STRING,
       },
       rating: {

@@ -35,33 +35,91 @@ function rootReducer(state = initialState, action) {
       };
 
     case ALPHABETICAL_FILTER:
-      let all = state.videogames;
-      if (action.payload === "az")
-        all.sort((a, b) => a.name.localeCompare(b.name));
-      if (action.payload === "za")
-        all.sort((a, b) => b.name.localeCompare(a.name));
-      if (action.payload === "all") all = state.videogames;
+      let sortedVideogame =
+        action.payload === "az"
+          ? state.videogames.sort((a, b) => {
+              if (a.name > b.name) return 1;
+              if (a.name < b.name) return -1;
+              return 0;
+            })
+          : state.videogames.sort((a, b) => {
+              if (a.name > b.name) return -1;
+              if (a.name < b.name) return 1;
+              return 0;
+            });
       return {
         ...state,
-        videogames: [...all],
+        videogames: sortedVideogame,
       };
+    // let all = state.videogames;
+    // if (action.payload === "az")
+    //   all.sort((a, b) => a.name.localeCompare(b.name));
+    // if (action.payload === "za")
+    //   all.sort((a, b) => b.name.localeCompare(a.name));
+    // if (action.payload === "all") all = state.videogames;
+    // return {
+    //   ...state,
+    //   videogames: [...all],
+    // };
+    // let sortedAlphetical = [...state.videogames];
+    // sortedAlphetical =
+    //   action.payload === "az"
+    //     ? state.videogames.sort(function (a, b) {
+    //         if (a.name > b.name) {
+    //           return 1;
+    //         }
+    //         if (b.name > a.name) {
+    //           return -1;
+    //         }
+    //         return 0;
+    //       })
+    //     : state.videogames.sort(function (a, b) {
+    //         if (a.name > b.name) {
+    //           return -1;
+    //         }
+    //         if (b.name > a.name) {
+    //           return 1;
+    //         }
+    //         return 0;
+    //       });
+    // return {
+    //   ...state,
+    //   videogames: sortedAlphetical,
+    //   allVideogames: action.payload,
+    // };
 
     case FILTER_RATING:
-      let filterRating = state.videogames;
-      filterRating = filterRating.sort((a, b) => {
-        if (a.rating < b.rating) {
-          return action.payload === "asc" ? 1 : -1;
-        }
-        if (a.rating > b.rating) {
-          return action.payload === "asc" ? -1 : 1;
-        }
-        return 0;
-      });
+      let orderByRating =
+        action.payload === "asc"
+          ? state.videogames.sort((a, b) => {
+              if (a.rating > b.rating) return -1;
+              if (a.rating < b.rating) return 1;
+              return 0;
+            })
+          : state.videogames.sort((a, b) => {
+              if (a.rating > b.rating) return 1;
+              if (a.rating < b.rating) return -1;
+              return 0;
+            });
       return {
         ...state,
-        videogames:
-          action.payload === "Rating" ? state.videogames : filterRating,
+        videogames: orderByRating,
       };
+    // let filterRating = state.videogames;
+    // filterRating = filterRating.sort((a, b) => {
+    //   if (a.rating < b.rating) {
+    //     return action.payload === "asc" ? 1 : -1;
+    //   }
+    //   if (a.rating > b.rating) {
+    //     return action.payload === "asc" ? -1 : 1;
+    //   }
+    //   return 0;
+    // });
+    // return {
+    //   ...state,
+    //   videogames:
+    //     action.payload === "Rating" ? state.allVideogames : filterRating,
+    // };
 
     case GET_GENRES_VIDEOGAME:
       return {
@@ -104,6 +162,9 @@ function rootReducer(state = initialState, action) {
         action.payload === "creados"
           ? state.allVideogames.filter((e) => e.createdInDb)
           : state.allVideogames.filter((e) => !e.createdInDb);
+      if (filterCreated.length === 0) {
+        return alert("Aún no hay Videogames creados");
+      }
       return {
         ...state,
         videogames:

@@ -1,10 +1,12 @@
 import axios from "axios";
+import swal from "sweetalert";
 
 export const GET_VIDEOGAMES = "GET_VIDEOGAMES";
 export const ALPHABETICAL_FILTER = "ALPHABETICAL_FILTER";
 export const FILTER_RATING = "FILTER_RATING";
 export const GET_VIDEOGAME_NAME = "GET_VIDEOGAME_NAME";
 export const FILTER_BY_GENRES = "FILTER_BY_GENRES";
+export const FILTER_BY_PLATFORMS = "FILTER_BY_PLATFORMS";
 export const FILTER_BY_CREATED = "FILTER_BY_CREATED";
 export const GET_GENRES_VIDEOGAME = "GET_GENRES_VIDEOGAME";
 export const GET_PLATFORM_VIDEOGAME = "GET_PLATFORM_VIDEOGAME";
@@ -32,10 +34,19 @@ export function getVideogameByName(name) {
         payload: videogameName.data,
       });
     } catch (error) {
-      alert("Videogame no encontrado");
+      alert("UPS! Ese videogame no existe");
     }
   };
 }
+
+// swal({
+//   title: "Ups!",
+//   text: "Videogame no encontrado!",
+//   icon: "error",
+//   button: "Volver a Buscar!",
+// });
+
+// alert("Videogame no encontrado");
 
 export function getGenresVideogame() {
   return async function (dispatch) {
@@ -53,10 +64,10 @@ export function getGenresVideogame() {
 export function getPlatformVideogame() {
   return async function (dispatch) {
     try {
-      let jsonPlatform = await axios.get("http://localhost:3001/platforms");
+      let jsonPlatform = await axios.get("http://localhost:3001/videogames");
       return dispatch({
         type: "GET_PLATFORM_VIDEOGAME",
-        payload: jsonPlatform.data,
+        payload: jsonPlatform.data.map((e) => e.parent_platforms),
       });
     } catch (error) {
       console.log(error);
@@ -106,6 +117,12 @@ export function filterByRating(payload) {
 export function filterByGenres(payload) {
   return {
     type: "FILTER_BY_GENRES",
+    payload,
+  };
+}
+export function filterByPlatforms(payload) {
+  return {
+    type: "FILTER_BY_PLATFORMS",
     payload,
   };
 }

@@ -11,6 +11,7 @@ import {
 } from "../action";
 import { Link } from "react-router-dom";
 import Pages from "./Pages";
+import Loading from "../components/Loading";
 // import Search from "./Search";
 // import Refresh from "../components/Images/refresh.png";
 import "../styles/home.css";
@@ -18,8 +19,10 @@ import Navbar from "./Navbar";
 
 export default function Home() {
   const dispatch = useDispatch();
-  const allVideogames = useSelector((state) => state.videogames);
+
   const [order, setOrder] = useState("");
+  const [videogames, setVideogames] = useState([]);
+  const allVideogames = useSelector((state) => state.videogames);
   const [currentPage, setCurrentPage] = useState(1);
   const [videogamePerPage, setVideogamePerPage] = useState(15);
   const indexOfLastVideogame = currentPage * videogamePerPage; // resultado:15
@@ -58,7 +61,7 @@ export default function Home() {
     e.preventDefault();
     dispatch(filterByGenres(e.target.value));
     setCurrentPage(1);
-    setOrder(`Ordenado ${e.target.value}`);
+    // setOrder(`Ordenado ${e.target.value}`);
   }
 
   function handleRating(e) {
@@ -74,14 +77,20 @@ export default function Home() {
     setOrder(`Ordenado ${e.target.value}`);
     setCurrentPage(1);
   }
-
-  return (
-    <div>
-      <div className="home-cont">
-        <Navbar />
-        {/* <Link to="/create">Crear Videojuego</Link>
+  if (currentVideogames.length === 0) {
+    return (
+      <div>
+        <Loading />
+      </div>
+    );
+  } else {
+    return (
+      <div>
+        <div className="home-cont">
+          <Navbar />
+          {/* <Link to="/create">Crear Videojuego</Link>
         <h1>SOY EL HOME</h1> */}
-        {/* <div
+          {/* <div
           onClick={(e) => {
             handleClick(e);
           }}
@@ -93,52 +102,57 @@ export default function Home() {
             title="Cargar todos los Pokémons"
           />
         </div> */}
-        <div></div>
-        {/* <div>
+
+          {/* <div>
           <Search />
         </div> */}
-        <div>
-          <select onChange={(e) => handleSortAz(e)}>
-            <option value="all">ORDEN ALFABÉTICO</option>
-            <option value="az">A/Z</option>
-            <option value="za">Z/A</option>
-          </select>
-          <select onChange={(e) => handleRating(e)}>
-            <option value="Rating">RATING</option>
-            <option value="asc">Mayor Rating</option>
-            <option value="desc">Menor Rating</option>
-          </select>
+          <div className="filter">
+            <div className="filtered" value="filtered">
+              <select onChange={(e) => handleSortAz(e)}>
+                <option value="all">ORDEN ALFABÉTICO</option>
+                <option value="az">A/Z</option>
+                <option value="za">Z/A</option>
+              </select>
+              <select onChange={(e) => handleRating(e)}>
+                <option value="Rating">RATING</option>
+                <option value="asc">Mayor Rating</option>
+                <option value="desc">Menor Rating</option>
+              </select>
 
-          <select onChange={(e) => handleGenres(e)}>
-            <option value="Genres">GÉNERO</option>
-            <option value="Adventure"> Adventure </option>
-            <option value="Strategy"> Strategy </option>
-            <option value="RPG"> RPG </option>
-            <option value="Action"> Action </option>
-            <option value="Indie"> Indie </option>
-            <option value="Puzzle"> Puzzle </option>
-            <option value="Shooter"> Shooter </option>
-            <option value="Casual"> Casual </option>
-            <option value="Simulation"> Simulation </option>
-            <option value="Arcade"> Arcade </option>
-            <option value="Platformer"> Platformer </option>
-            <option value="Racing"> Racing </option>
-            <option value="Massively Multiplayer">
-              {" "}
-              Massively Multiplayer{" "}
-            </option>
-            <option value="Sports"> Sports </option>
-            <option value="Fighting"> Fighting </option>
-            <option value="Family"> Family </option>
-            <option value="Board Games"> Board Games </option>
-            <option value="Educational"> Educational </option>
-            <option value="Card"> Card </option>
-          </select>
-          <select onChange={(e) => handleCreated(e)}>
-            <option value="all"> TODOS </option>
-            <option value="creados"> Creados </option>
-            <option value="existentes"> Existentes </option>
-          </select>
+              <select onChange={(e) => handleGenres(e)}>
+                <option value="Genres">GÉNERO</option>
+                <option value="Adventure"> Adventure </option>
+                <option value="Strategy"> Strategy </option>
+                <option value="RPG"> RPG </option>
+                <option value="Action"> Action </option>
+                <option value="Indie"> Indie </option>
+                <option value="Puzzle"> Puzzle </option>
+                <option value="Shooter"> Shooter </option>
+                <option value="Casual"> Casual </option>
+                <option value="Simulation"> Simulation </option>
+                <option value="Arcade"> Arcade </option>
+                <option value="Platformer"> Platformer </option>
+                <option value="Racing"> Racing </option>
+                <option value="Massively Multiplayer">
+                  {" "}
+                  Massively Multiplayer{" "}
+                </option>
+                <option value="Sports"> Sports </option>
+                <option value="Fighting"> Fighting </option>
+                <option value="Family"> Family </option>
+                <option value="Board Games"> Board Games </option>
+                <option value="Educational"> Educational </option>
+                <option value="Card"> Card </option>
+              </select>
+              <select onChange={(e) => handleCreated(e)}>
+                <option value="all"> TODOS </option>
+                <option value="creados"> Creados </option>
+                <option value="existentes"> Existentes </option>
+              </select>
+            </div>
+          </div>
+          <br />
+          <br />
           <div>
             <Pages
               videogamePerPage={videogamePerPage}
@@ -146,26 +160,27 @@ export default function Home() {
               paginado={paginado}
             />
           </div>
+          <br />
+          <br />
+
           {currentVideogames ? (
             currentVideogames.map((e) => {
               return (
-                <>
-                  <Link to={"/videogames/" + e.id}>
-                    <Cards
-                      image={e.image}
-                      name={e.name}
-                      rating={e.rating}
-                      genres={e.genres}
-                    />
-                  </Link>
-                </>
+                <Link key={e.id} to={"/videogames/" + e.id}>
+                  <Cards
+                    image={e.image}
+                    name={e.name}
+                    rating={e.rating}
+                    genres={e.genres}
+                  />
+                </Link>
               );
             })
           ) : (
-            <h2>Loading...</h2>
+            <Loading />
           )}
         </div>
       </div>
-    </div>
-  );
+    );
+  }
 }

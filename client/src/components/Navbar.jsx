@@ -17,6 +17,7 @@ export default function Navbar() {
   return (
     <div className="nav-container">
       <div
+        className="refresh_cont"
         onClick={(e) => {
           handleClick(e);
         }}
@@ -25,11 +26,12 @@ export default function Navbar() {
           className="refresh"
           src={Refresh}
           alt="refresh"
-          title="Cargar todos los Pokémons"
+          title="Cargar todos los Videogames"
         />
       </div>
       <div>
-        <h1 className="encuentra">Videogames for Gamers</h1>
+        <h1 className="encuentra">VIDEOGAMES FOR GAMERS</h1>
+        {/* <p className="pHenry">By Henry</p> */}
       </div>
 
       <div className="ambos">

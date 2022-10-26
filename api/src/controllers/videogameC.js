@@ -21,10 +21,12 @@ const getAPIinfo = async () => {
       id: el.id,
       name: el.name,
       image: el.background_image,
+      released: el.released,
       rating: el.rating,
       genres: el.genres.map((el) => el.name),
       platforms: el.platforms.map((el) => el.platform.name),
       description: el.description_raw,
+      createdInDb: false,
     };
   });
   //console.log("SOY aiDATA", apiDATA);
@@ -49,10 +51,12 @@ const getGamesDB = async () => {
       id: el.id,
       name: el.name,
       image: el.image,
+      released: el.released,
       rating: el.rating,
       genres: el.genres.map((el) => el.name),
       platforms: el.platforms,
       description: el.description,
+      createdInDb: true,
     };
   });
   console.log("SOY videogameAux", videogameAux);
