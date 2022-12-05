@@ -1,5 +1,6 @@
 
 ![videogame](https://user-images.githubusercontent.com/92520469/205707138-e4ce7993-e071-404d-8e41-d58e9469270b.png)
+Imagen de la Home
 
 
 #### Tecnologías Utilizadas
